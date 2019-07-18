@@ -1,5 +1,6 @@
 import time
 from tkinter import *
+from tkinter import messagebox
 
 import pygame
 
@@ -39,12 +40,124 @@ FrameABC5.grid(row=0, column=0, sticky=W)
 FrameABC6 = Frame(FrameABC4, bg='green', bd=10, relief=RIDGE)
 FrameABC6.grid(row=1, column=0, columnspan=4, sticky=W)
 
-# variáveis de hora e data
+# # ===================== VARIÁVEIS =====================
 Date1 = StringVar()
 Time1 = StringVar()
 
+Receipt_Ref = StringVar()
+Tax = StringVar()
+SubTotal = StringVar()
+Total = StringVar()
+
+Jeans_Jeggers = StringVar()
+Coats_Jackets = StringVar()
+Sportwear = StringVar()
+Dresses = StringVar()
+Skirts = StringVar()
+Swimwear = StringVar()
+School_Uniform = StringVar()
+Pyjamas = StringVar()
+
+Jackets_Blazers = StringVar()
+Formal_Trousers = StringVar()
+Formal_Shirts = StringVar()
+Mens_Boots = StringVar()
+
+Bed_Sheet = StringVar()
+Pillows = StringVar()
+Patterned_Bedding = StringVar()
+Mattress_Protectors = StringVar()
+
+# ====== setando as variáveis como 0 ======
+
+Jeans_Jeggers.set('0')
+Coats_Jackets.set('0')
+Sportwear.set('0')
+Dresses.set('0')
+Skirts.set('0')
+Swimwear.set('0')
+School_Uniform.set('0')
+Pyjamas.set('0')
+Jackets_Blazers.set('0')
+Formal_Trousers.set('0')
+Formal_Shirts.set('0')
+Mens_Boots.set('0')
+Bed_Sheet.set('0')
+Pillows.set('0')
+Patterned_Bedding.set('0')
+Mattress_Protectors.set('0')
+
+
 Date1.set(time.strftime('%d/%m/%Y'))
 Time1.set(time.strftime('%H:%M:%S'))
+
+
+# ===================== FUNÇÕES DOS BOTÕES =====================
+# botão sair
+def Exit():
+    result = messagebox.askquestion('rafasaid@gmail.com', 'Deseja realmente sair?')
+    if result == 'yes':
+        root.destroy()
+        return
+
+
+# botão limpar
+def Reset():
+    textReceipt.delete('1.0', END)
+    Jeans_Jeggers.set('0')
+    Coats_Jackets.set('0')
+    Sportwear.set('0')
+    Dresses.set('0')
+    Skirts.set('0')
+    Swimwear.set('0')
+    School_Uniform.set('0')
+    Pyjamas.set('0')
+    Jackets_Blazers.set('0')
+    Formal_Trousers.set('0')
+    Formal_Shirts.set('0')
+    Mens_Boots.set('0')
+    Bed_Sheet.set('0')
+    Pillows.set('0')
+    Patterned_Bedding.set('0')
+    Mattress_Protectors.set('0')
+
+
+# botão total
+def Total():
+    Item1 = float(Jeans_Jeggers.get())
+    Item2 = float(Coats_Jackets.get())
+    Item3 = float(Sportwear.get())
+    Item4 = float(Dresses.get())
+    Item5 = float(Skirts.get())
+    Item6 = float(Swimwear.get())
+    Item7 = float(School_Uniform.get())
+    Item8 = float(Pyjamas.get())
+    Item9 = float(Jackets_Blazers.get())
+    Item10 = float(Formal_Trousers.get())
+    Item11 = float(Formal_Shirts.get())
+    Item12 = float(Mens_Boots.get())
+    Item13 = float(Bed_Sheet.get())
+    Item14 = float(Pillows.get())
+    Item15 = float(Patterned_Bedding.get())
+    Item16 = float(Mattress_Protectors.get())
+
+    PriceofItem1 = ('£') + str('%.2f' % (Item1 * 20.00))
+    PriceofItem2 = ('£') + str('%.2f' % (Item2 * 20.00))
+    PriceofItem3 = ('£') + str('%.2f' % (Item3 * 20.00))
+    PriceofItem4 = ('£') + str('%.2f' % (Item4 * 20.00))
+    PriceofItem5 = ('£') + str('%.2f' % (Item5 * 20.00))
+    PriceofItem6 = ('£') + str('%.2f' % (Item6 * 20.00))
+    PriceofItem7 = ('£') + str('%.2f' % (Item7 * 20.00))
+    PriceofItem8 = ('£') + str('%.2f' % (Item8 * 20.00))
+    PriceofItem9 = ('£') + str('%.2f' % (Item9 * 20.00))
+    PriceofItem10 = ('£') + str('%.2f' % (Item10 * 20.00))
+    PriceofItem11 = ('£') + str('%.2f' % (Item11 * 20.00))
+    PriceofItem12 = ('£') + str('%.2f' % (Item12 * 20.00))
+    PriceofItem13 = ('£') + str('%.2f' % (Item13 * 20.00))
+    PriceofItem14 = ('£') + str('%.2f' % (Item14 * 20.00))
+    PriceofItem15 = ('£') + str('%.2f' % (Item15 * 20.00))
+    PriceofItem16 = ('£') + str('%.2f' % (Item16 * 20.00))
+
 
 # ===================== LABEL DATA, TÍTULO, HORA =====================
 
@@ -85,22 +198,26 @@ lblDresses = Label(FrameABC2, text='Vestidos', font=('arial', 18, 'bold'), bd=8,
 
 # ===================== CAIXAS DE TEXTO FEMININO =====================
 # cria uma caixa de texto Entry de seção Jeans Blusa
-txtJeansBlusa = Entry(FrameABC2, font=('arial', 18, 'bold'), bd=2, bg='white', fg='black', justify=LEFT).grid(row=1,
+txtJeansBlusa = Entry(FrameABC2, textvariable=Jeans_Jeggers, font=('arial', 18, 'bold'), bd=2, bg='white', fg='black',
+                      justify=CENTER).grid(row=1,
                                                                                                               column=1,
                                                                                                               pady=1)
 
 # cria uma caixa de texto Entry de seção Casaco
-txtCoatsjackets = Entry(FrameABC2, font=('arial', 18, 'bold'), bd=2, bg='white', fg='black', justify=LEFT).grid(row=2,
+txtCoatsjackets = Entry(FrameABC2, textvariable=Coats_Jackets, font=('arial', 18, 'bold'), bd=2, bg='white', fg='black',
+                        justify=CENTER).grid(row=2,
                                                                                                                 column=1,
                                                                                                                 pady=1)
 
 # cria uma caixa de texto Entry de seção Roupa Sport
-txtSportwear = Entry(FrameABC2, font=('arial', 18, 'bold'), bd=2, bg='white', fg='black', justify=LEFT).grid(row=3,
+txtSportwear = Entry(FrameABC2, textvariable=Sportwear, font=('arial', 18, 'bold'), bd=2, bg='white', fg='black',
+                     justify=CENTER).grid(row=3,
                                                                                                              column=1,
                                                                                                              pady=1)
 
 # cria uma caixa de texto Entry de seção Vestidos
-txtDresses = Entry(FrameABC2, font=('arial', 18, 'bold'), bd=2, bg='white', fg='black', justify=LEFT).grid(row=4,
+txtDresses = Entry(FrameABC2, textvariable=Dresses, font=('arial', 18, 'bold'), bd=2, bg='white', fg='black',
+                   justify=CENTER).grid(row=4,
                                                                                                            column=1,
                                                                                                            pady=1)
 
@@ -127,108 +244,121 @@ lblPyjamas = Label(FrameABC2, text='Pijama', font=('arial', 18, 'bold'), bd=8, b
 
 # ===================== CAIXAS DE TEXTO CRIANÇAS =====================
 # cria uma caixa de texto Entry de seção Jeans Blusa
-txtSkirts = Entry(FrameABC2, font=('arial', 18, 'bold'), bd=2, bg='white', fg='black', justify=LEFT).grid(row=6,
+txtSkirts = Entry(FrameABC2, textvariable=Skirts, font=('arial', 18, 'bold'), bd=2, bg='white', fg='black',
+                  justify=CENTER).grid(row=6,
                                                                                                           column=1,
                                                                                                           pady=1)
 
 # cria uma caixa de texto Entry de seção Casaco
-txtSwimwear = Entry(FrameABC2, font=('arial', 18, 'bold'), bd=2, bg='white', fg='black', justify=LEFT).grid(row=7,
+txtSwimwear = Entry(FrameABC2, textvariable=Swimwear, font=('arial', 18, 'bold'), bd=2, bg='white', fg='black',
+                    justify=CENTER).grid(row=7,
                                                                                                             column=1,
                                                                                                             pady=1)
 
 # cria uma caixa de texto Entry de seção Roupa Sport
-txtSchoolUniform = Entry(FrameABC2, font=('arial', 18, 'bold'), bd=2, bg='white', fg='black', justify=LEFT).grid(row=8,
+txtSchoolUniform = Entry(FrameABC2, textvariable=School_Uniform, font=('arial', 18, 'bold'), bd=2, bg='white',
+                         fg='black', justify=CENTER).grid(row=8,
                                                                                                                  column=1,
                                                                                                                  pady=1)
 
 # cria uma caixa de texto Entry de seção Vestidos
-txtPyjamas = Entry(FrameABC2, font=('arial', 18, 'bold'), bd=2, bg='white', fg='black', justify=LEFT).grid(row=9,
+txtPyjamas = Entry(FrameABC2, textvariable=Pyjamas, font=('arial', 18, 'bold'), bd=2, bg='white', fg='black',
+                   justify=CENTER).grid(row=9,
                                                                                                            column=1,
                                                                                                            pady=1)
 
 # ==================== FRAMEABC3 ===========================
 
-# ===================== LABEL FEMININO =====================
+# ===================== LABEL MASCULINO =====================
 # cria um label de seção Feminino
-lblFeminino = Label(FrameABC3, text='Feminino', font=('arial', 20, 'bold'), padx=8, pady=1, bd=8, bg='yellow',
+lblMasculino = Label(FrameABC3, text='Masculino', font=('arial', 20, 'bold'), padx=8, pady=1, bd=8, bg='yellow',
                     fg='black', width=25, justify=CENTER).grid(row=0, column=0, columnspan=4)
 
 # cria um label de seção Jeans Blusa
-lblJeansBlusa = Label(FrameABC3, text='Jeans blusa', font=('arial', 18, 'bold'), bd=8, bg='green', fg='yellow',
+lblJackets_Blazers = Label(FrameABC3, text='Casacos', font=('arial', 18, 'bold'), bd=8, bg='green', fg='yellow',
                       justify=LEFT).grid(row=1, column=0)
 
 # cria um label de seção Casaco
-lblCoatsjackets = Label(FrameABC3, text='Casaco', font=('arial', 18, 'bold'), bd=8, bg='green', fg='yellow',
+lblFormal_Trousers = Label(FrameABC3, text='Calças', font=('arial', 18, 'bold'), bd=8, bg='green', fg='yellow',
                         justify=LEFT).grid(row=2, column=0)
 
 # cria um label de seção Roupa Sport
-lblSportwear = Label(FrameABC3, text='Roupa Sport', font=('arial', 18, 'bold'), bd=8, bg='green', fg='yellow',
+lblFormal_Shirts = Label(FrameABC3, text='Camisetas', font=('arial', 18, 'bold'), bd=8, bg='green', fg='yellow',
                      justify=LEFT).grid(row=3, column=0)
 
 # cria um label de seção Vestidos
-lblDresses = Label(FrameABC3, text='Vestidos', font=('arial', 18, 'bold'), bd=8, bg='green', fg='yellow',
+lblBoots = Label(FrameABC3, text='Botas', font=('arial', 18, 'bold'), bd=8, bg='green', fg='yellow',
                    justify=LEFT).grid(row=4, column=0)
 
-# ===================== CAIXAS DE TEXTO FEMININO =====================
+# ===================== CAIXAS DE TEXTO MASCULINO =====================
 # cria uma caixa de texto Entry de seção Jeans Blusa
-txtJeansBlusa = Entry(FrameABC3, font=('arial', 18, 'bold'), bd=2, bg='white', fg='black', justify=LEFT).grid(row=1,
+txtJackets_Blazers = Entry(FrameABC3, textvariable=Jackets_Blazers, font=('arial', 18, 'bold'), bd=2, bg='white',
+                           fg='black', justify=CENTER).grid(row=1,
                                                                                                               column=1,
                                                                                                               pady=1)
 
 # cria uma caixa de texto Entry de seção Casaco
-txtCoatsjackets = Entry(FrameABC3, font=('arial', 18, 'bold'), bd=2, bg='white', fg='black', justify=LEFT).grid(row=2,
+txtFormal_Trousers = Entry(FrameABC3, textvariable=Formal_Trousers, font=('arial', 18, 'bold'), bd=2, bg='white',
+                           fg='black', justify=CENTER).grid(row=2,
                                                                                                                 column=1,
                                                                                                                 pady=1)
 
 # cria uma caixa de texto Entry de seção Roupa Sport
-txtSportwear = Entry(FrameABC3, font=('arial', 18, 'bold'), bd=2, bg='white', fg='black', justify=LEFT).grid(row=3,
+txtFormal_Shirts = Entry(FrameABC3, textvariable=Formal_Shirts, font=('arial', 18, 'bold'), bd=2, bg='white',
+                         fg='black', justify=CENTER).grid(row=3,
                                                                                                              column=1,
                                                                                                              pady=1)
 
 # cria uma caixa de texto Entry de seção Vestidos
-txtDresses = Entry(FrameABC3, font=('arial', 18, 'bold'), bd=2, bg='white', fg='black', justify=LEFT).grid(row=4,
+txtBoots = Entry(FrameABC3, textvariable=Mens_Boots, font=('arial', 18, 'bold'), bd=2, bg='white', fg='black',
+                 justify=CENTER).grid(row=4,
                                                                                                            column=1,
                                                                                                            pady=1)
 
-# ===================== LABEL CRIANÇAS =====================
-# cria um label de seção Feminino
-lblCrianca = Label(FrameABC3, text='Crianças', font=('arial', 20, 'bold'), padx=8, pady=1, bd=8, bg='yellow',
+# ===================== LABEL ROUPAS DE CAMA=====================
+# cria um label de seção
+lblroupas = Label(FrameABC3, text='Roupas de cama', font=('arial', 20, 'bold'), padx=8, pady=1, bd=8, bg='yellow',
                    fg='black', width=25, justify=CENTER).grid(row=5, column=0, columnspan=4)
 
 # cria um label de seção Vestidos
-lblSkirts = Label(FrameABC3, text='Saias', font=('arial', 18, 'bold'), bd=8, bg='green', fg='yellow',
+lblBedSheet = Label(FrameABC3, text='Lençol', font=('arial', 18, 'bold'), bd=8, bg='green', fg='yellow',
                   justify=LEFT).grid(row=6, column=0)
 
 # cria um label de seção Vestidos
-lblSwimwear = Label(FrameABC3, text='Natação', font=('arial', 18, 'bold'), bd=8, bg='green', fg='yellow',
+lblPillows = Label(FrameABC3, text='Travesseiros', font=('arial', 18, 'bold'), bd=8, bg='green', fg='yellow',
                     justify=LEFT).grid(row=7, column=0)
 
 # cria um label de seção Vestidos
-lblSchoolUniform = Label(FrameABC3, text='Uniforme', font=('arial', 18, 'bold'), bd=8, bg='green', fg='yellow',
+lblPatternedBedding = Label(FrameABC3, text='Estampa', font=('arial', 18, 'bold'), bd=8, bg='green', fg='yellow',
                          justify=LEFT).grid(row=8, column=0)
 
 # cria um label de seção Vestidos
-lblPyjamas = Label(FrameABC3, text='Pijama', font=('arial', 18, 'bold'), bd=8, bg='green', fg='yellow',
+lblMattressProtectors = Label(FrameABC3, text='Protetor colchão', font=('arial', 18, 'bold'), bd=8, bg='green',
+                              fg='yellow',
                    justify=LEFT).grid(row=9, column=0)
 
-# ===================== CAIXAS DE TEXTO CRIANÇAS =====================
+# ===================== CAIXAS DE TEXTO ROUPAS =====================
 # cria uma caixa de texto Entry de seção Jeans Blusa
-txtSkirts = Entry(FrameABC3, font=('arial', 18, 'bold'), bd=2, bg='white', fg='black', justify=LEFT).grid(row=6,
+txtBedSheet = Entry(FrameABC3, textvariable=Bed_Sheet, font=('arial', 18, 'bold'), bd=2, bg='white', fg='black',
+                    justify=CENTER).grid(row=6,
                                                                                                           column=1,
                                                                                                           pady=1)
 
 # cria uma caixa de texto Entry de seção Casaco
-txtSwimwear = Entry(FrameABC3, font=('arial', 18, 'bold'), bd=2, bg='white', fg='black', justify=LEFT).grid(row=7,
+txtPillows = Entry(FrameABC3, textvariable=Pillows, font=('arial', 18, 'bold'), bd=2, bg='white', fg='black',
+                   justify=CENTER).grid(row=7,
                                                                                                             column=1,
                                                                                                             pady=1)
 
 # cria uma caixa de texto Entry de seção Roupa Sport
-txtSchoolUniform = Entry(FrameABC3, font=('arial', 18, 'bold'), bd=2, bg='white', fg='black', justify=LEFT).grid(row=8,
+txtPatteredBedding = Entry(FrameABC3, textvariable=Patterned_Bedding, font=('arial', 18, 'bold'), bd=2, bg='white',
+                           fg='black', justify=CENTER).grid(row=8,
                                                                                                                  column=1,
                                                                                                                  pady=1)
 
 # cria uma caixa de texto Entry de seção Vestidos
-txtPyjamas = Entry(FrameABC3, font=('arial', 18, 'bold'), bd=2, bg='white', fg='black', justify=LEFT).grid(row=9,
+txtMattressProtectors = Entry(FrameABC3, textvariable=Mattress_Protectors, font=('arial', 18, 'bold'), bd=2, bg='white',
+                              fg='black', justify=CENTER).grid(row=9,
                                                                                                            column=1,
                                                                                                            pady=1)
 
@@ -240,10 +370,12 @@ textReceipt.grid(row=0, column=0)
 btnTotal = Button(FrameABC6, padx=1, pady=1, bd=4, fg='black', font=('arial', 16, 'bold'), width=7, bg='orange',
                   text='Total').grid(row=0, column=0)
 
-btnLimpar = Button(FrameABC6, padx=1, pady=1, bd=4, fg='black', font=('arial', 16, 'bold'), width=7, bg='yellow',
+btnLimpar = Button(FrameABC6, padx=1, pady=1, bd=4, fg='black', command=Reset, font=('arial', 16, 'bold'), width=7,
+                   bg='yellow',
                    text='Limpar').grid(row=0, column=2)
 
-btnSair = Button(FrameABC6, padx=1, pady=1, bd=4, fg='black', font=('arial', 16, 'bold'), width=7, bg='red',
+btnSair = Button(FrameABC6, padx=1, pady=1, bd=4, fg='black', command=Exit, font=('arial', 16, 'bold'), width=7,
+                 bg='red',
                  text='Sair').grid(row=0, column=3)
 
 
