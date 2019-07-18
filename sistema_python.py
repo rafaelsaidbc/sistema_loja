@@ -142,21 +142,23 @@ def Total():
     Item16 = float(Mattress_Protectors.get())
 
     PriceofItem1 = ('£') + str('%.2f' % (Item1 * 20.00))
-    PriceofItem2 = ('£') + str('%.2f' % (Item2 * 20.00))
-    PriceofItem3 = ('£') + str('%.2f' % (Item3 * 20.00))
-    PriceofItem4 = ('£') + str('%.2f' % (Item4 * 20.00))
-    PriceofItem5 = ('£') + str('%.2f' % (Item5 * 20.00))
-    PriceofItem6 = ('£') + str('%.2f' % (Item6 * 20.00))
-    PriceofItem7 = ('£') + str('%.2f' % (Item7 * 20.00))
-    PriceofItem8 = ('£') + str('%.2f' % (Item8 * 20.00))
-    PriceofItem9 = ('£') + str('%.2f' % (Item9 * 20.00))
-    PriceofItem10 = ('£') + str('%.2f' % (Item10 * 20.00))
-    PriceofItem11 = ('£') + str('%.2f' % (Item11 * 20.00))
-    PriceofItem12 = ('£') + str('%.2f' % (Item12 * 20.00))
-    PriceofItem13 = ('£') + str('%.2f' % (Item13 * 20.00))
-    PriceofItem14 = ('£') + str('%.2f' % (Item14 * 20.00))
-    PriceofItem15 = ('£') + str('%.2f' % (Item15 * 20.00))
-    PriceofItem16 = ('£') + str('%.2f' % (Item16 * 20.00))
+    PriceofItem2 = ('£') + str('%.2f' % (Item2 * 18.00))
+    PriceofItem3 = ('£') + str('%.2f' % (Item3 * 10.00))
+    PriceofItem4 = ('£') + str('%.2f' % (Item4 * 15.00))
+    PriceofItem5 = ('£') + str('%.2f' % (Item5 * 7.00))
+    PriceofItem6 = ('£') + str('%.2f' % (Item6 * 11.00))
+    PriceofItem7 = ('£') + str('%.2f' % (Item7 * 5.00))
+    PriceofItem8 = ('£') + str('%.2f' % (Item8 * 8.00))
+    PriceofItem9 = ('£') + str('%.2f' % (Item9 * 9.00))
+    PriceofItem10 = ('£') + str('%.2f' % (Item10 * 30.00))
+    PriceofItem11 = ('£') + str('%.2f' % (Item11 * 22.00))
+    PriceofItem12 = ('£') + str('%.2f' % (Item12 * 25.00))
+    PriceofItem13 = ('£') + str('%.2f' % (Item13 * 40.00))
+    PriceofItem14 = ('£') + str('%.2f' % (Item14 * 3.00))
+    PriceofItem15 = ('£') + str('%.2f' % (Item15 * 2.00))
+    PriceofItem16 = ('£') + str('%.2f' % (Item16 * 31.00))
+
+
 
 
 # ===================== LABEL DATA, TÍTULO, HORA =====================
