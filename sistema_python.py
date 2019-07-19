@@ -1,3 +1,4 @@
+import random
 import time
 from tkinter import *
 from tkinter import messagebox
@@ -103,7 +104,7 @@ def Exit():
 
 # botão limpar
 def Reset():
-    textReceipt.delete('1.0', END)
+    txtReceipt.delete('1.0', END)
     Jeans_Jeggers.set('0')
     Coats_Jackets.set('0')
     Sportwear.set('0')
@@ -145,21 +146,61 @@ def Total():
     PriceofItem2 = ('£') + str('%.2f' % (Item2 * 18.00))
     PriceofItem3 = ('£') + str('%.2f' % (Item3 * 10.00))
     PriceofItem4 = ('£') + str('%.2f' % (Item4 * 15.00))
+
     PriceofItem5 = ('£') + str('%.2f' % (Item5 * 7.00))
     PriceofItem6 = ('£') + str('%.2f' % (Item6 * 11.00))
     PriceofItem7 = ('£') + str('%.2f' % (Item7 * 5.00))
     PriceofItem8 = ('£') + str('%.2f' % (Item8 * 8.00))
+
     PriceofItem9 = ('£') + str('%.2f' % (Item9 * 9.00))
     PriceofItem10 = ('£') + str('%.2f' % (Item10 * 30.00))
     PriceofItem11 = ('£') + str('%.2f' % (Item11 * 22.00))
     PriceofItem12 = ('£') + str('%.2f' % (Item12 * 25.00))
+
     PriceofItem13 = ('£') + str('%.2f' % (Item13 * 40.00))
     PriceofItem14 = ('£') + str('%.2f' % (Item14 * 3.00))
     PriceofItem15 = ('£') + str('%.2f' % (Item15 * 2.00))
     PriceofItem16 = ('£') + str('%.2f' % (Item16 * 31.00))
 
+    # Total de cada seção
+    Feminino = (Item1 * 20.00) + (Item2 * 18.00) + (Item3 * 10.00) + (Item4 * 15.00)
+    Crianca = (Item5 * 7.00) + (Item6 * 11.00) + (Item7 * 5.00) + (Item8 * 8.00)
+    Masculino = (Item9 * 9.00) + (Item10 * 30.00) + (Item11 * 22.00) + (Item12 * 25.00)
+    Roupa = (Item13 * 40.00) + (Item14 * 3.00) + (Item15 * 2.00) + (Item16 * 31.00)
 
+    # sub total e taxa
+    SubTotalofITEMS = ('£') + str('%.2f' % (Feminino + Crianca + Masculino + Roupa))
+    Tax = ('£') + str('%.2f' % (Feminino + Crianca + Masculino + Roupa) * 15)
+    TT = (Feminino + Crianca + Masculino + Roupa)
+    TC = ((Feminino + Crianca + Masculino + Roupa) * 0.15)
+    TotalCost = ('£') + str('%.2f' % (TT + TC))
 
+    # dados do recibo
+    txtReceipt.delete('1.0', END)
+    x = random.randint(10747, 500298)
+    randomRef = str(x)
+    Receipt_Ref.set('CUPOM ' + randomRef)
+    txtReceipt.insert(END, 'Cupom Ref:\t' + Receipt_Ref.get() + '\n' + Date1.get() + '\t\t' + Time1.get() + '\n')
+    txtReceipt.insert(END, '----------------------------------------------------------' + '\n')
+    txtReceipt.insert(END, 'Item: \t\t\t' + 'Preço \n')
+    txtReceipt.insert(END, '----------------------------------------------------------' + '\n')
+
+    txtReceipt.insert(END, 'Blusa jeans \t\t\t' + PriceofItem1 + '\n')
+    txtReceipt.insert(END, 'Casaco \t\t\t' + PriceofItem2 + '\n')
+    txtReceipt.insert(END, 'Roupa Sport \t\t\t' + PriceofItem3 + '\n')
+    txtReceipt.insert(END, 'Vestidos \t\t\t' + PriceofItem4 + '\n')
+    txtReceipt.insert(END, 'Saias \t\t\t' + PriceofItem5 + '\n')
+    txtReceipt.insert(END, 'Blusa jeans \t\t\t' + PriceofItem6 + '\n')
+    txtReceipt.insert(END, 'Natação \t\t\t' + PriceofItem7 + '\n')
+    txtReceipt.insert(END, 'Uniformes \t\t\t' + PriceofItem8 + '\n')
+    txtReceipt.insert(END, 'Pijamas \t\t\t' + PriceofItem9 + '\n')
+    txtReceipt.insert(END, 'Casacos Masculino \t\t\t' + PriceofItem10 + '\n')
+    txtReceipt.insert(END, 'Camisetas \t\t\t' + PriceofItem11 + '\n')
+    txtReceipt.insert(END, 'Botas \t\t\t' + PriceofItem12 + '\n')
+    txtReceipt.insert(END, 'Lençol \t\t\t' + PriceofItem13 + '\n')
+    txtReceipt.insert(END, 'Travesseiros \t\t\t' + PriceofItem14 + '\n')
+    txtReceipt.insert(END, 'Estampa \t\t\t' + PriceofItem15 + '\n')
+    txtReceipt.insert(END, 'Protetor colchão \t\t\t' + PriceofItem16 + '\n')
 
 # ===================== LABEL DATA, TÍTULO, HORA =====================
 
@@ -365,11 +406,12 @@ txtMattressProtectors = Entry(FrameABC3, textvariable=Mattress_Protectors, font=
                                                                                                            pady=1)
 
 # ===================== RECIBO =====================
-textReceipt = Text(FrameABC5, height=23, width=37, bd=23, font=('arial', 9, 'bold'))
-textReceipt.grid(row=0, column=0)
+txtReceipt = Text(FrameABC5, height=23, width=37, bd=23, font=('arial', 9, 'bold'))
+txtReceipt.grid(row=0, column=0)
 
 # ===================== BOTÕES =====================
-btnTotal = Button(FrameABC6, padx=1, pady=1, bd=4, fg='black', font=('arial', 16, 'bold'), width=7, bg='orange',
+btnTotal = Button(FrameABC6, padx=1, pady=1, bd=4, fg='black', command=Total, font=('arial', 16, 'bold'), width=7,
+                  bg='orange',
                   text='Total').grid(row=0, column=0)
 
 btnLimpar = Button(FrameABC6, padx=1, pady=1, bd=4, fg='black', command=Reset, font=('arial', 16, 'bold'), width=7,
